@@ -69,7 +69,7 @@ app.get("/api/verifyEmail/:token", async (req, res, next) => {
 
 app.all("*", (req, res, next) => {
   const err = new AppError(
-    `the requested URL ${req.originalUrl} not found on this server`,
+    `the requested URL ${req.originalUrl} not founbbbbbd on this server`,
     404
   );
   next(err);

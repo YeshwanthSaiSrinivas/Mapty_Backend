@@ -23,6 +23,7 @@ const upload = multer({
 exports.uploadEvent = upload.single("photo");
 
 exports.resizeEventPhoto = async (req, res, next) => {
+  console.log("photo resize event")
   try {
     console.log(req.file);
     if (!req.file) return next();
@@ -40,6 +41,7 @@ exports.resizeEventPhoto = async (req, res, next) => {
 exports.uploadEventPhoto = upload.single("photo");
 
 exports.createEvent = async (req, res, next) => {
+  console.log("craete event");
   try {
     let news = req.body.location.split(",");
     news[0] = parseFloat(news[0]);
@@ -85,6 +87,7 @@ exports.getEventByHobby = async (req, res, next) => {
 };
 
 exports.uploadPhoto = async (req, res, next) => {
+  console.log("uploadPhoto")
   try {
     let filteredObj = { photo: "" };
     if (req.file) filteredObj.photo = req.file.filename;
@@ -92,6 +95,7 @@ exports.uploadPhoto = async (req, res, next) => {
       new: true,
       runValidators: true,
     });
+    console.log(newEvent);
     res.status(200).json({ status: "success", data: { newEvent } });
   } catch (err) {}
 };
